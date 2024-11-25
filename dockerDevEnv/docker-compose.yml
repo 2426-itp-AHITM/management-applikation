@@ -1,0 +1,24 @@
+services:
+  webpack-server:
+    image: node:latest
+    working_dir: /home/node/app
+    ports:
+      - "8888:8888"
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./:/home/node/app
+    command: "npm install && npm "
+  mariadb:
+    image: mariadb:latest
+    environment:
+      MARIADB_ROOT_PASSWORD: UW1jB
+      MARIADB_DATABASE: leoleih
+      MARIADB_USER: prodserver
+      MARIADB_PASSWORD: y95TXrSK4S00Rv3Td
+    ports:
+      - "3306:3306"
+    volumes:
+      - mariadb-data:/var/lib/mariadb
+volumes:
+  mariadb-data:
